@@ -74,3 +74,11 @@ Enter master host (eg. "10.0.1.10"): 10.0.1.10
              Slave_IO_Running: Yes
             Slave_SQL_Running: Yes
 ```
+
+## When replication is up and running
+
+**Add database to master**
+
+```
+docker exec db1-master ./create-db.sh new_dbname new_dbuser new-secret-pass
+```
