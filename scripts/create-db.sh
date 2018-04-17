@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "${MYSQL_REPLICATION_ROLE}" == "slave" ]; then
+    echo "Please create your DB on replication master."
+    exit 1;
+fi
 
 # ...
 if [ "$1" == "" ]; then
