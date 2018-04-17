@@ -2,7 +2,7 @@ version: '3'
 services:
   db-master:
     container_name: db-master
-    image: micusto/percona:replication
+    image: urlund/percona:replication
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pass
       - MYSQL_REPLICATION_ROLE=master
@@ -11,7 +11,7 @@ services:
       - /path/to/mysql/:/var/lib/mysql/
   db-slave:
     container_name: db-slave
-    image: micusto/percona:replication
+    image: urlund/percona:replication
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pass
       - MYSQL_REPLICATION_ROLE=slave
