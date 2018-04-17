@@ -27,3 +27,9 @@ COPY scripts/replication-setup.sh /replication-setup.sh
 
 # make it executable
 RUN chmod +x /replication-setup.sh
+
+# copy script to create db
+COPY scripts/create-db.sh /create-db.sh
+
+# make it executable
+RUN chmod +x /create-db.sh
