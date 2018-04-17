@@ -80,5 +80,5 @@ Enter master host (eg. "10.0.1.10"): 10.0.1.10
 **Add database to master**
 
 ```
-docker exec db1-master ./create-db.sh new_dbname new_dbuser new-secret-pass
+docker exec db-master ./create-db.sh new_dbname new_dbuser new-secret-pass
 ```
