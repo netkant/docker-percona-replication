@@ -22,13 +22,13 @@
 
 ```
 # docker exec -it db-master bash
-# ./replication-setup.sh /var/tmp/
+# db-replication-setup /var/tmp/
 ```
 
 Example:
 
 ```
-# ./replication-setup.sh /var/tmp/
+# db-replication-setup /var/tmp/
 180416 15:02:13  version_check Connecting to MySQL server with DSN 'dbi:mysql:;mysql_read_default_group=xtrabackup' as 'root'  (using password: YES).
 180416 15:02:13  version_check Connected to MySQL server
 180416 15:02:13  version_check Executing a version check against the server...
@@ -59,13 +59,13 @@ Example:
 
 ```
 # docker exec -it db-slave bash
-# ./replication-setup.sh
+# db-replication-setup
 ```
 
 Example:
 
 ```
-# ./replication-setup.sh
+# db-replication-setup
 mysql-bin.000003	444
 Enter master log file name (eg. "mysql-bin.000003"): mysql-bin.000003
 Enter master log pos (eg. "143"): 444
@@ -80,5 +80,12 @@ Enter master host (eg. "10.0.1.10"): 10.0.1.10
 **Add database to master**
 
 ```
-docker exec db-master ./create-db.sh new_dbname new_dbuser new-secret-pass
+docker exec db-master db-create-update new_dbname new_dbuser new-secret-pass
+```
+
+
+**Add crontabs to host**
+```
+0 1 * * * /usr/bin/docker exec db-slave db-backup /my/backup/volume > /dev/null 2>&1
+*/5 * * * * /usr/bin/docker exec db-slave db-replication-status > /dev/null 2>&1
 ```
