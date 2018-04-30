@@ -1,3 +1,42 @@
 [mysqld]
 log-bin=mysql-bin
 server-id=2
+show_compatibility_56=ON
+
+character-set-server = utf8
+collation-server     = utf8_general_ci
+userstat             = 1
+
+key_buffer_size      = 32M
+
+max_heap_table_size  = 32M
+max_connect_errors   = 1000000
+max_connections      = 201
+
+thread_stack         = 256K
+thread_cache_size    = 64
+
+myisam-recover-options = FORCE,BACKUP
+open_files_limit       = 131072
+
+table_definition_cache = 4096
+table_open_cache       = 10240
+tmp_table_size         = 32M
+query_cache_type       = 1
+query_cache_limit      = 2M
+query_cache_size       = 2G
+
+expire_logs_days       = 14
+max_binlog_size        = 100M
+sync_binlog            = 1
+sysdate_is_now         = 1
+log_queries_not_using_indexes = 1
+
+innodb = FORCE
+innodb_buffer_pool_size        = 10G
+innodb_file_per_table          = 1
+innodb_flush_log_at_trx_commit = 1
+innodb_flush_method            = O_DIRECT
+innodb_log_file_size           = 256M
+innodb_log_files_in_group      = 2
+innodb_lock_wait_timeout       = 900
