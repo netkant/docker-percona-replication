@@ -9,12 +9,14 @@ services:
     volumes:
       - /path/to/master.cnf:/etc/mysql/conf.d/master.cnf
       - /path/to/mysql/:/var/lib/mysql/
+      - SLACK_CHANNEL=https://hooks.slack.com/services/some/slack/channel
   db-slave:
     container_name: db-slave
     image: urlund/percona:replication
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pass
       - MYSQL_REPLICATION_ROLE=slave
+      - SLACK_CHANNEL=https://hooks.slack.com/services/some/slack/channel
     volumes:
       - /path/to/slave.cnf:/etc/mysql/conf.d/slave.cnf
       - /path/to/mysql/:/var/lib/mysql/
