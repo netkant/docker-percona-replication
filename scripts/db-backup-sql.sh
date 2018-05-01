@@ -107,10 +107,10 @@ for DATABASE in ${DATABASES}; do
 		echo 'Dumping:' ${DATABASE}
 
         # data dump of database with mysqldump and pipe into file (compressed)
-        mysqldump --no-create-db --no-create-info $EXCLUDE ${DATABASE} | pigz > $BACKUP_DIR/${DATABASE}/${DATABASE}-`date +%d`-`date +%m`-`date +%y`-`date +%H``date +%M`.sql.gz
+        mysqldump --no-create-db --no-create-info $EXCLUDE ${DATABASE} | pigz > $BACKUP_DIR/${DATABASE}/${DATABASE}-`date +%d`-`date +%m`-`date +%Y`-`date +%H``date +%M`.sql.gz
 
 		# structure dump of database with mysqldump and pipe into file (compressed)
-		mysqldump -d ${DATABASE} | pigz > $BACKUP_DIR/${DATABASE}/${DATABASE}-`date +%d`-`date +%m`-`date +%y`-`date +%H``date +%M`.structureonly.sql.gz
+		mysqldump -d ${DATABASE} | pigz > $BACKUP_DIR/${DATABASE}/${DATABASE}-`date +%d`-`date +%m`-`date +%Y`-`date +%H``date +%M`.structureonly.sql.gz
 
         # delete databases older than 90 days
         find $BACKUP_DIR/${DATABASE} -type f -ctime +90 -print -exec rm -f {} \;
