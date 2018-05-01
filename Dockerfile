@@ -1,5 +1,8 @@
 FROM percona:latest
 
+# set timezone
+RUN echo "Europe/Copenhagen" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
 # update repositories
 RUN apt-get update
 
