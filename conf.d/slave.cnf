@@ -1,4 +1,6 @@
 [mysqld]
+sql_mode = "NO_ENGINE_SUBSTITUTION"
+
 log-bin=mysql-bin
 server-id=2
 show_compatibility_56=ON
