@@ -9,7 +9,7 @@ fi
 if [ "${MYSQL_REPLICATION_ROLE}" == "slave" ]; then
     export MYSQL_PWD=${MYSQL_ROOT_PASSWORD}
     # ...
-    STATUS=$(mysql --user=root -e "SHOW SLAVE STATUS \G;" | grep -e "_Running:" -e "Seconds" -e "Slave_" -e "Master_Host")
+    STATUS=$(mysql --user=root -e "SHOW SLAVE STATUS \G;" | grep -e "_Running:" -e "Seconds" -e "Master_Host")
 
     # ...
     if [ "${SLACK_CHANNEL}" != "" ]; then
